@@ -38,7 +38,7 @@ const subscriptionSchema = new mongoose.Schema(
       required: true,
     },
     paymentMethod: {
-      tpye: String,
+      type: String,
       required: true,
       trim: true,
     },
