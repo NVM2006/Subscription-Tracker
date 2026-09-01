@@ -10,6 +10,7 @@ import userRouter from "./routes/userRouter.js";
 
 import errorMiddleware from "./middleware/errorMiddleware.js";
 import arcjetMiddleware from "./middleware/arcjetMiddleware.js";
+import workflowRouter from "./routes/workflowRouter.js";
 
 const app = express();
 app.use(express.json());
@@ -20,11 +21,12 @@ app.use(arcjetMiddleware);
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/subscription", subscriptionRouter);
+app.use("/api/v1/workflow", workflowRouter);
 
 app.use(errorMiddleware);
 
 const server = app.listen(PORT, async () => {
-  console.log(`Server runnning on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
   await connectToDatabase();
 });
 
