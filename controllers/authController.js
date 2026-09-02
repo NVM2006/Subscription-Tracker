@@ -77,4 +77,14 @@ export const signIn = async (req, res, next) => {
     next(error);
   }
 };
-export const signOut = async (req, res, next) => {};
+
+export const signOut = async (req, res, next) => {
+  res.cookie("jwt", "", {
+    httpOnly: true,
+    expires: new Date(0),
+  });
+  res.status(200).json({
+    status: "success",
+    message: "Logged out successfully",
+  });
+};
